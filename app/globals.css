@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #111111;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour le calendrier react-day-picker */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #3B82F6;
+  --rdp-background-color: #1f1f1f;
+  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline-selected: 2px solid rgba(59, 130, 246, 0.75);
+  margin: 1rem auto;
+}
+
+.rdp-months {
+  display: flex;
+  gap: 1rem;
+}
+
+.rdp-month {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.rdp-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.rdp-head_cell {
+  color: #888;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.rdp-cell {
+  text-align: center;
+}
+
+.rdp-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.rdp-button:hover:not(.rdp-day_disabled) {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.rdp-day_selected {
+  background-color: #3B82F6 !important;
+  color: white;
+  font-weight: 600;
+}
+
+.rdp-day_disabled {
+  color: #444;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.rdp-day_today {
+  font-weight: bold;
+  border: 2px solid #3B82F6;
+}
+
+.rdp-day_range_start,
+.rdp-day_range_end {
+  background-color: #3B82F6 !important;
+}
+
+.rdp-day_range_middle {
+  background-color: rgba(59, 130, 246, 0.3) !important;
+}

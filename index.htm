@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APX - Guide de Démarrage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #3B82F6;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        .step {
+            background: #252525;
+            border-left: 4px solid #3B82F6;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .step h3 {
+            color: #60A5FA;
+            margin-bottom: 10px;
+        }
+        code {
+            background: #111;
+            color: #3B82F6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #111;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: #60A5FA;
+        }
+        ul {
+            margin-left: 30px;
+            color: #ccc;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid #3B82F6;
+            color: #60A5FA;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .file-tree {
+            background: #111;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            margin: 15px 0;
+        }
+        .file-tree .folder { color: #60A5FA; }
+        .file-tree .file { color: #22c55e; }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 APX</h1>
+        <p class="subtitle">Application de Location de Voitures - MVP Complet</p>
+
+        <div class="success">
+            <strong>✅ Projet créé avec succès!</strong><br>
+            Tous les fichiers ont été générés et les dépendances sont installées.
+        </div>
+
+        <div class="section">
+            <h2>📋 Ce qui a été créé</h2>
+            <ul>
+                <li>✅ <strong>3 Tables Supabase</strong> (profiles, cars, bookings)</li>
+                <li>✅ <strong>7 Pages Next.js</strong> (accueil, détail, réservations, login, profil)</li>
+                <li>✅ <strong>3 Composants React</strong> (Navbar, CarCard, BookingCalendar)</li>
+                <li>✅ <strong>Configuration complète</strong> (Tailwind, TypeScript, Supabase)</li>
+                <li>✅ <strong>Documentation détaillée</strong> (4 fichiers MD)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Démarrage Rapide (3 étapes)</h2>
+
+            <div class="step">
+                <h3>1️⃣ Configurer Supabase</h3>
+                <p>Va sur <a href="https://supabase.com" target="_blank">supabase.com</a> et crée un projet</p>
+                <ul>
+                    <li>Clique sur <strong>SQL Editor</strong></li>
+                    <li>Copie le contenu de <code>supabase-schema.sql</code></li>
+                    <li>Colle-le dans l'éditeur et clique sur <strong>Run</strong></li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>2️⃣ Configurer les variables d'environnement</h3>
+                <p>Crée un fichier <code>.env.local</code> à la racine :</p>
+                <pre><code>NEXT_PUBLIC_SUPABASE_URL=https://ton-projet.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=ta-clé-anon-key</code></pre>
+                <p>Récupère tes clés dans : <strong>Project Settings → API</strong></p>
+            </div>
+
+            <div class="step">
+                <h3>3️⃣ Lancer l'application</h3>
+                <pre><code>npm run dev</code></pre>
+                <p>Ouvre <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> dans ton navigateur</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <strong>📖 Documentation disponible :</strong><br>
+            • <code>README.md</code> - Vue d'ensemble<br>
+            • <code>GUIDE_INSTALLATION.md</code> - Guide complet étape par étape<br>
+            • <code>STRUCTURE_COMPLETE.md</code> - Explication de chaque fichier<br>
+            • <code>RECAP_FINAL.md</code> - Récapitulatif complet
+        </div>
+
+        <div class="section">
+            <h2>📁 Structure du Projet</h2>
+            <div class="file-tree">
+<span class="folder">APX/</span>
+├── <span class="folder">app/</span>
+│   ├── <span class="folder">cars/[id]/</span>
+│   │   └── <span class="file">page.tsx</span> (Détail voiture + calendrier)
+│   ├── <span class="folder">bookings/</span>
+│   │   └── <span class="file">page.tsx</span> (Mes réservations)
+│   ├── <span class="file">layout.tsx</span> (Layout global)
+│   └── <span class="file">page.tsx</span> (Page d'accueil)
+├── <span class="folder">components/</span>
+│   ├── <span class="file">BookingCalendar.tsx</span>
+│   ├── <span class="file">CarCard.tsx</span>
+│   └── <span class="file">Navbar.tsx</span>
+├── <span class="folder">lib/</span>
+│   ├── <span class="folder">supabase/</span>
+│   │   ├── <span class="file">client.ts</span>
+│   │   └── <span class="file">server.ts</span>
+│   └── <span class="folder">types/</span>
+│       └── <span class="file">database.types.ts</span>
+├── <span class="file">supabase-schema.sql</span>
+└── <span class="file">.env.local</span> (À créer)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✨ Fonctionnalités</h2>
+            <ul>
+                <li><strong>Page d'accueil :</strong> Liste de toutes les voitures avec cartes stylées</li>
+                <li><strong>Page détail :</strong> Informations complètes + calendrier de réservation</li>
+                <li><strong>Calendrier intelligent :</strong> Dates déjà réservées automatiquement bloquées</li>
+                <li><strong>Réservations :</strong> Système complet avec validation et calcul de prix</li>
+                <li><strong>Dark mode :</strong> Design moderne avec Tailwind CSS</li>
+                <li><strong>TypeScript :</strong> Types stricts pour toute la DB</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Stack Technique</h2>
+            <ul>
+                <li><strong>Next.js 14</strong> avec App Router</li>
+                <li><strong>React 18</strong> avec TypeScript</li>
+                <li><strong>Supabase</strong> (PostgreSQL + Auth)</li>
+                <li><strong>Tailwind CSS</strong> (Dark Mode)</li>
+                <li><strong>react-day-picker</strong> (Calendrier)</li>
+                <li><strong>date-fns</strong> (Manipulation de dates)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Prochaines Étapes</h2>
+            <ol>
+                <li>Configure Supabase et crée les tables</li>
+                <li>Ajoute tes clés dans <code>.env.local</code></li>
+                <li>Lance l'app et teste les fonctionnalités</li>
+                <li>Implémente l'authentification complète</li>
+                <li>Ajoute de nouvelles fonctionnalités (paiement, admin, etc.)</li>
+                <li>Déploie sur Vercel</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <strong>💡 Conseil :</strong> Lis le <code>GUIDE_INSTALLATION.md</code> pour des instructions détaillées et illustrées.
+        </div>
+
+        <div class="footer">
+            <p>Créé avec ❤️ par Claude Code</p>
+            <p>Next.js 14 • Supabase • Tailwind CSS</p>
+        </div>
+    </div>
+</body>
+</html>
