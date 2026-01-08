@@ -8,6 +8,7 @@ import 'react-day-picker/dist/style.css'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import { createBooking } from '@/app/actions/bookings'
 
 interface BookingCalendarProps {
   carId: string
@@ -95,26 +96,20 @@ export default function BookingCalendar({
         return
       }
 
-      // Créer la réservation
-      const { data, error: insertError } = await supabase
-        .from('bookings')
-        .insert({
-          user_id: user.id,
-          car_id: carId,
-          start_date: range.from.toISOString().split('T')[0],
-          end_date: range.to.toISOString().split('T')[0],
-          status: 'pending',
-          total_price: 0, // Pas de prix dans le modèle abonnement
-        })
-        .select()
+      // Créer la réservation via Server Action (avec envoi d'email)
+      const result = await createBooking(
+        carId,
+        range.from.toISOString().split('T')[0],
+        range.to.toISOString().split('T')[0]
+      )
 
-      if (insertError) {
-        throw insertError
+      if (result.error) {
+        throw new Error(result.error)
       }
 
       // Succès - Redirection vers les réservations
       toast.success('Réservation confirmée !', {
-        description: 'Votre réservation a été créée avec succès.',
+        description: 'Un email de confirmation vous a été envoyé.',
       })
       router.push('/bookings')
     } catch (err: any) {

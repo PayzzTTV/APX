@@ -9,7 +9,13 @@
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(xargs kill:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(curl:*)",
+      "Bash(timeout /t 5)",
+      "Bash(timeout 5 bash -c 'until curl -s http://localhost:3000 > /dev/null 2>&1; do sleep 1; done && echo \"\"Server is up!\"\"')",
+      "Bash(npm uninstall:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }

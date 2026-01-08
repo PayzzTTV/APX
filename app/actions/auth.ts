@@ -3,6 +3,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { format } from 'date-fns'
+import { fr } from 'date-fns/locale'
 
 export async function signUp(formData: FormData) {
   const supabase = await createClient()
@@ -37,19 +39,16 @@ export async function signUp(formData: FormData) {
     return { error: error.message }
   }
 
-  // Si l'inscription réussit, mettre à jour le profil
-  if (data.user) {
-    const { error: profileError } = await supabase
-      .from('profiles')
-      .update({
-        full_name: fullName,
-        phone: phone,
-      })
-      .eq('id', data.user.id)
+  // Le profil est créé automatiquement par le trigger Supabase
 
-    if (profileError) {
-      console.error('Erreur mise à jour profil:', profileError)
-    }
+  // Vérifier si l'utilisateur est bien créé et connecté
+  if (!data.user) {
+    return { error: 'Erreur lors de la création du compte' }
+  }
+
+  // Si l'email nécessite une confirmation, afficher un message
+  if (data.user && !data.session) {
+    return { error: 'Vérifiez votre email pour confirmer votre compte' }
   }
 
   revalidatePath('/', 'layout')
@@ -133,6 +132,18 @@ export async function cancelBooking(bookingId: string) {
     return { error: 'Non authentifié' }
   }
 
+  // Récupérer les détails de la réservation avant l'annulation
+  const { data: booking, error: fetchError } = await supabase
+    .from('bookings')
+    .select('*, cars(*), profiles(*)')
+    .eq('id', bookingId)
+    .eq('user_id', user.id)
+    .single()
+
+  if (fetchError || !booking) {
+    return { error: 'Réservation introuvable' }
+  }
+
   // Mettre à jour le statut de la réservation à 'cancelled'
   const { error } = await supabase
     .from('bookings')
@@ -214,6 +225,13 @@ export async function updateBooking(
   if (overlappingBookings && overlappingBookings.length > 0) {
     return { error: 'Ces dates ne sont pas disponibles pour cette voiture' }
   }
+
+  // Récupérer le profil de l'utilisateur
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single()
 
   // Mettre à jour la réservation
   const { error: updateError } = await supabase

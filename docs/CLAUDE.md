@@ -52,7 +52,7 @@ The app uses **two different Supabase client patterns**:
 
 All data mutations are handled through **Next.js Server Actions** in the `app/actions/` directory:
 
-- `app/actions/auth.ts` - Authentication (login, signup, logout)
+- `app/actions/auth.ts` - Authentication (login, signup, logout) and profile management (updateProfile, cancelBooking)
 - `app/actions/favorites.ts` - Favorites management (add, remove, check, list)
 
 Server actions follow this pattern:
@@ -88,6 +88,23 @@ export async function actionName(params) {
 **Important**: The database uses Row Level Security (RLS). Check `supabase-schema-v2.sql` and `supabase-favorites-schema.sql` for policies.
 
 ### Component Architecture
+
+**Key Components**:
+
+- `CarCard.tsx` - Vehicle display card with favorite button
+- `CarsGrid.tsx` - Grid layout for car listings
+- `BookingCalendar.tsx` - Date range picker for reservations
+- `BookingCard.tsx` - Displays user booking details
+- `FavoriteButton.tsx` - Heart icon toggle for favorites
+- `SearchBar.tsx` - Search input for filtering cars
+- `FilterPanel.tsx` - Category and availability filters
+- `CarSpecs.tsx` - Technical specifications display
+- `EditBookingModal.tsx` - Modal for modifying reservations
+- `CancelBookingButton.tsx` - Cancel reservation action
+- `AuthForm.tsx` - Login/signup form
+- `ProfileForm.tsx` - User profile editor
+- `AnimationProvider.tsx` - Framer Motion page transitions
+- `Navbar.tsx` - iOS-style bottom navigation
 
 **Key Patterns**:
 
@@ -206,11 +223,13 @@ if (!user) {
 
 ### Current Development State
 
-The app is in V3 development according to `ROADMAP_V3.md`. Recent additions:
+The app is in V3 development according to `ROADMAP_V3.md`. Recent V3 additions:
 - ✅ Toast notification system (Sonner)
 - ✅ Animations (Framer Motion)
 - ✅ Favorites system
-- 🚧 Filters and search (in progress)
+- ✅ Filters and search (SearchBar, FilterPanel components)
+- ✅ Car specifications display (CarSpecs component)
+- ✅ Booking modification (EditBookingModal component)
 
 See `ROADMAP_V3.md` for the full development plan and `CHECKLIST.md` for validation status.
 
