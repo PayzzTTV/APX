@@ -2,6 +2,9 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { sendBookingConfirmationEmail } from '@/lib/email'
+import { format } from 'date-fns'
+import { fr } from 'date-fns/locale'
 
 export async function createBooking(
   carId: string,
@@ -51,6 +54,38 @@ export async function createBooking(
 
   if (insertError || !booking) {
     return { error: insertError?.message || 'Erreur lors de la création de la réservation' }
+  }
+
+  // Récupérer les informations de la voiture et de l'utilisateur pour l'email
+  const { data: car } = await supabase
+    .from('cars')
+    .select('name, image_url')
+    .eq('id', carId)
+    .single()
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('full_name, email')
+    .eq('id', user.id)
+    .single()
+
+  // Envoyer l'email de confirmation
+  if (car && profile) {
+    try {
+      await sendBookingConfirmationEmail({
+        userName: profile.full_name || profile.email.split('@')[0],
+        userEmail: profile.email,
+        carName: car.name,
+        carImage: car.image_url || '',
+        startDate: format(new Date(startDate), 'dd MMMM yyyy', { locale: fr }),
+        endDate: format(new Date(endDate), 'dd MMMM yyyy', { locale: fr }),
+        bookingId: booking.id
+      })
+      console.log('✅ Email de confirmation envoyé à', profile.email)
+    } catch (emailError) {
+      console.error('❌ Erreur lors de l\'envoi de l\'email de confirmation:', emailError)
+      // Ne pas bloquer la réservation si l'email échoue
+    }
   }
 
   revalidatePath('/bookings')

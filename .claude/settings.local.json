@@ -15,7 +15,9 @@
       "Bash(timeout /t 5)",
       "Bash(timeout 5 bash -c 'until curl -s http://localhost:3000 > /dev/null 2>&1; do sleep 1; done && echo \"\"Server is up!\"\"')",
       "Bash(npm uninstall:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(node -e \"const { Resend } = require\\(''resend''\\); const r = new Resend\\(''re_hJj7ixRb_AerxaRFNRwHpkeNynnfN8VK7''\\); r.emails.send\\({from: ''APX <onboarding@resend.dev>'', to: [''delivered@resend.dev''], subject: ''Test APX'', html: ''<strong>Test</strong>''}\\).then\\(d => console.log\\(''✅ Success:'', d.id\\)\\).catch\\(e => console.error\\(''❌ Error:'', e.message\\)\\);\")",
+      "Bash(git add:*)"
     ]
   }
 }

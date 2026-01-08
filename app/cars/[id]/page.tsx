@@ -1,9 +1,9 @@
 import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import BookingCalendar from '@/components/BookingCalendar'
 import FavoriteButton from '@/components/FavoriteButton'
 import CarSpecs from '@/components/CarSpecs'
+import CarGallery from '@/components/CarGallery'
 
 interface CarDetailPageProps {
   params: Promise<{
@@ -61,18 +61,15 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
       </a>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left Column - Image & Details */}
+        {/* Left Column - Image Gallery & Details */}
         <div>
-          {/* Main Image */}
-          <div className="relative h-96 w-full rounded-xl overflow-hidden mb-6">
-            <Image
-              src={car.image_url || '/placeholder-car.jpg'}
-              alt={car.name}
-              fill
-              className="object-cover"
-              priority
+          {/* Image Gallery with Carousel */}
+          <div className="relative mb-6">
+            <CarGallery
+              images={(car as any).images || [car.image_url].filter(Boolean)}
+              carName={car.name}
             />
-            {/* Favorite Button - Top Right */}
+            {/* Favorite Button - Top Right of Gallery */}
             <div className="absolute top-4 right-4 z-10">
               <FavoriteButton carId={car.id} />
             </div>

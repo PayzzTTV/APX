@@ -318,41 +318,41 @@ Le nouveau schéma va :
 - [x] 12 véhicules avec descriptions détaillées
 - [x] Navigation mobile iOS style
 
-### Court Terme (1-2 jours) - Amélioration UX
+### Court Terme (1-2 jours) - Amélioration UX ✅ COMPLÉTÉ
 - [ ] Tester l'app sur un vrai iPhone (via Expo ou build iOS)
-- [ ] Ajouter une page "Détails du véhicule" enrichie avec :
-  - [ ] Galerie d'images (carousel)
-  - [ ] Affichage des caractéristiques techniques (poids, dimensions)
-  - [ ] Niveaux de confort et finition visuels (étoiles/barres)
-- [ ] Ajouter des animations de transition (Framer Motion)
-- [ ] Améliorer le feedback utilisateur (toasts au lieu d'alertes)
+- [x] Ajouter une page "Détails du véhicule" enrichie avec :
+  - [x] Galerie d'images (carousel) - **CarGallery.tsx créé, migration SQL disponible**
+  - [x] Affichage des caractéristiques techniques (poids, dimensions) - **CarSpecs.tsx**
+  - [x] Niveaux de confort et finition visuels (étoiles/barres) - **CarSpecs.tsx**
+- [x] Ajouter des animations de transition (Framer Motion) - **AnimationProvider + composants**
+- [x] Améliorer le feedback utilisateur (toasts au lieu d'alertes) - **Sonner intégré partout**
 
-### Moyen Terme (1 semaine) - Fonctionnalités Avancées
-- [ ] Système de filtres et recherche :
-  - [ ] Filtre par catégorie (citadine, SUV, électrique, etc.)
-  - [ ] Filtre par disponibilité
-  - [ ] Recherche par nom/marque
-- [ ] Système de favoris :
-  - [ ] Bouton "Ajouter aux favoris" sur chaque voiture
-  - [ ] Page "Mes Favoris"
-  - [ ] Table `favorites` dans Supabase
-- [ ] Modification de réservation :
-  - [ ] Permettre de changer les dates d'une réservation en cours
-  - [ ] Vérifier les disponibilités avant la modification
+### Moyen Terme (1 semaine) - Fonctionnalités Avancées ✅ COMPLÉTÉ
+- [x] Système de filtres et recherche :
+  - [x] Filtre par catégorie (citadine, SUV, électrique, etc.) - **FilterPanel.tsx**
+  - [x] Filtre par disponibilité - **FilterPanel.tsx**
+  - [x] Recherche par nom/marque - **SearchBar.tsx**
+- [x] Système de favoris :
+  - [x] Bouton "Ajouter aux favoris" sur chaque voiture - **FavoriteButton.tsx**
+  - [x] Page "Mes Favoris" - **app/favorites/page.tsx**
+  - [x] Table `favorites` dans Supabase - **supabase-favorites-schema.sql**
+- [x] Modification de réservation :
+  - [x] Permettre de changer les dates d'une réservation en cours - **EditBookingModal.tsx**
+  - [x] Vérifier les disponibilités avant la modification - **updateBooking action**
 - [ ] Notifications :
-  - [ ] Email de confirmation de réservation
-  - [ ] Email de rappel avant le début de la location
+  - [ ] Email de confirmation de réservation - **Code prêt, manque clé API Resend**
+  - [ ] Email de rappel avant le début de la location - **Code prêt, manque cron job**
 
 ### Long Terme (1 mois) - Production Ready
-- [ ] Interface Admin complète :
-  - [ ] Dashboard avec statistiques (nombre de réservations, voitures les plus louées)
-  - [ ] CRUD voitures (Create, Read, Update, Delete)
-  - [ ] Gestion des utilisateurs
-  - [ ] Gestion des réservations (approuver/refuser)
+- [x] Interface Admin complète : ✅ COMPLÉTÉ
+  - [x] Dashboard avec statistiques (nombre de réservations, voitures les plus louées) - **app/admin/page.tsx**
+  - [x] CRUD voitures (Create, Read, Update, Delete) - **app/admin/cars/**
+  - [x] Gestion des utilisateurs - **app/admin/users/page.tsx**
+  - [x] Gestion des réservations (approuver/refuser) - **app/admin/bookings/page.tsx**
 - [ ] Système de gestion d'abonnement :
-  - [ ] Intégration Stripe pour les paiements mensuels
-  - [ ] Différents niveaux d'abonnement (Basic, Premium, VIP)
-  - [ ] Page de facturation et historique
+  - [ ] Intégration Stripe pour les paiements mensuels - **PAS DE PAYWALL PRÉVU**
+  - [ ] Différents niveaux d'abonnement (Basic, Premium, VIP) - **PAS DE PAYWALL PRÉVU**
+  - [ ] Page de facturation et historique - **PAS DE PAYWALL PRÉVU**
 - [ ] Optimisations :
   - [ ] Upload et optimisation d'images (Cloudinary ou Supabase Storage)
   - [ ] Mise en cache des données (React Query)

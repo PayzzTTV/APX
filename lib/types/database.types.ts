@@ -41,6 +41,7 @@ export interface Database {
           brand: string
           model: string
           image_url: string | null
+          images: string[] | null
           price_per_day: number
           rating: number
           description: string | null
@@ -51,6 +52,7 @@ export interface Database {
           brand: string
           model: string
           image_url?: string | null
+          images?: string[] | null
           price_per_day: number
           rating?: number
           description?: string | null
@@ -60,6 +62,7 @@ export interface Database {
           brand?: string
           model?: string
           image_url?: string | null
+          images?: string[] | null
           price_per_day?: number
           rating?: number
           description?: string | null

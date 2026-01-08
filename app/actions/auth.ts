@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import { sendWelcomeEmail, sendBookingCancellationEmail, sendBookingModificationEmail } from '@/lib/email'
 
 export async function signUp(formData: FormData) {
   const supabase = await createClient()
@@ -49,6 +50,18 @@ export async function signUp(formData: FormData) {
   // Si l'email nécessite une confirmation, afficher un message
   if (data.user && !data.session) {
     return { error: 'Vérifiez votre email pour confirmer votre compte' }
+  }
+
+  // Envoyer l'email de bienvenue
+  try {
+    await sendWelcomeEmail({
+      userName: fullName || email.split('@')[0],
+      userEmail: email
+    })
+    console.log('✅ Email de bienvenue envoyé à', email)
+  } catch (emailError) {
+    console.error('❌ Erreur lors de l\'envoi de l\'email de bienvenue:', emailError)
+    // Ne pas bloquer l'inscription si l'email échoue
   }
 
   revalidatePath('/', 'layout')
@@ -158,6 +171,23 @@ export async function cancelBooking(bookingId: string) {
     return { error: error.message }
   }
 
+  // Envoyer l'email d'annulation
+  try {
+    await sendBookingCancellationEmail({
+      userName: (booking as any).profiles.full_name || (booking as any).profiles.email.split('@')[0],
+      userEmail: (booking as any).profiles.email,
+      carName: (booking as any).cars.name,
+      carImage: (booking as any).cars.image_url || '',
+      startDate: format(new Date((booking as any).start_date), 'dd MMMM yyyy', { locale: fr }),
+      endDate: format(new Date((booking as any).end_date), 'dd MMMM yyyy', { locale: fr }),
+      bookingId: booking.id
+    })
+    console.log('✅ Email d\'annulation envoyé à', (booking as any).profiles.email)
+  } catch (emailError) {
+    console.error('❌ Erreur lors de l\'envoi de l\'email d\'annulation:', emailError)
+    // Ne pas bloquer l'annulation si l'email échoue
+  }
+
   revalidatePath('/bookings')
   return { success: true }
 }
@@ -246,6 +276,29 @@ export async function updateBooking(
 
   if (updateError) {
     return { error: updateError.message }
+  }
+
+  // Envoyer l'email de modification
+  if (profile) {
+    try {
+      await sendBookingModificationEmail({
+        userName: profile.full_name || profile.email.split('@')[0],
+        userEmail: profile.email,
+        carName: (currentBooking as any).cars.name,
+        carImage: (currentBooking as any).cars.image_url || '',
+        oldStartDate: format(new Date((currentBooking as any).start_date), 'dd MMMM yyyy', { locale: fr }),
+        oldEndDate: format(new Date((currentBooking as any).end_date), 'dd MMMM yyyy', { locale: fr }),
+        newStartDate: format(new Date(newStartDate), 'dd MMMM yyyy', { locale: fr }),
+        newEndDate: format(new Date(newEndDate), 'dd MMMM yyyy', { locale: fr }),
+        startDate: format(new Date(newStartDate), 'dd MMMM yyyy', { locale: fr }),
+        endDate: format(new Date(newEndDate), 'dd MMMM yyyy', { locale: fr }),
+        bookingId: bookingId
+      })
+      console.log('✅ Email de modification envoyé à', profile.email)
+    } catch (emailError) {
+      console.error('❌ Erreur lors de l\'envoi de l\'email de modification:', emailError)
+      // Ne pas bloquer la modification si l'email échoue
+    }
   }
 
   revalidatePath('/bookings')

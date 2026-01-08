@@ -262,11 +262,11 @@ Avant de considérer les emails comme prêts :
 - [x] Intégration dans Server Actions
 - [x] Configuration .env.local.example
 - [x] Documentation complète
-- [ ] Compte Resend créé
-- [ ] Clé API configurée
-- [ ] Tests effectués (voir TEST_EMAILS.md)
-- [ ] Domaine personnalisé (production)
-- [ ] Cron jobs configurés (rappels)
+- [ ] 🔴 **Compte Resend créé** - RESTE À FAIRE
+- [ ] 🔴 **Clé API configurée** - RESTE À FAIRE
+- [ ] 🔴 **Tests effectués** (voir TEST_EMAILS.md) - RESTE À FAIRE
+- [ ] 🟠 Domaine personnalisé (production) - OPTIONNEL
+- [ ] 🟠 Cron jobs configurés (rappels) - OPTIONNEL
 
 ---
 
