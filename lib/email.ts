@@ -1,7 +1,18 @@
 import { Resend } from 'resend'
 
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialize Resend to avoid build-time errors
+let resend: Resend | null = null
+
+function getResend() {
+  if (!resend) {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY is not defined')
+    }
+    resend = new Resend(apiKey)
+  }
+  return resend
+}
 
 // Email sender configuration
 const FROM_EMAIL = process.env.FROM_EMAIL || 'APX <onboarding@resend.dev>'
@@ -34,7 +45,7 @@ export interface ModificationEmailData extends BookingEmailData {
  */
 export async function sendBookingConfirmationEmail(data: BookingEmailData) {
   try {
-    const { data: result, error } = await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: data.userEmail,
       subject: 'Réservation confirmée - APX',
@@ -104,7 +115,7 @@ export async function sendBookingConfirmationEmail(data: BookingEmailData) {
  */
 export async function sendBookingModificationEmail(data: ModificationEmailData) {
   try {
-    const { data: result, error } = await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: data.userEmail,
       subject: 'Réservation modifiée - APX',
@@ -171,7 +182,7 @@ export async function sendBookingModificationEmail(data: ModificationEmailData) 
  */
 export async function sendBookingCancellationEmail(data: BookingEmailData) {
   try {
-    const { data: result, error } = await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: data.userEmail,
       subject: 'Réservation annulée - APX',
@@ -238,7 +249,7 @@ export async function sendBookingCancellationEmail(data: BookingEmailData) {
  */
 export async function sendBookingReminderEmail(data: BookingEmailData) {
   try {
-    const { data: result, error } = await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: data.userEmail,
       subject: 'Rappel : Votre location commence demain ! - APX',
@@ -289,7 +300,7 @@ export async function sendBookingReminderEmail(data: BookingEmailData) {
  */
 export async function sendWelcomeEmail(data: WelcomeEmailData) {
   try {
-    const { data: result, error } = await resend.emails.send({
+    const { data: result, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: data.userEmail,
       subject: 'Bienvenue chez APX ! 🎉',
