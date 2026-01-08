@@ -4,6 +4,10 @@ import { sendBookingReminderEmail } from '@/lib/email'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 /**
  * Cron Job API Route - Send booking reminders 24h before
  *
