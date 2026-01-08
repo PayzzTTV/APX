@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import CarsGrid from '@/components/CarsGrid'
 
+export const revalidate = 0 // Disable caching for this page
+
 export default async function Home() {
   const supabase = await createClient()
 
