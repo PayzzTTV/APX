@@ -169,7 +169,7 @@ export async function sendBookingModificationEmail(data: ModificationEmailData) 
 /**
  * Send booking cancellation email
  */
-export async function sendBookingCancellationEmail(data: Omit<BookingEmailData, 'carImage'>) {
+export async function sendBookingCancellationEmail(data: BookingEmailData) {
   try {
     const { data: result, error } = await resend.emails.send({
       from: FROM_EMAIL,
