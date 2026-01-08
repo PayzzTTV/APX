@@ -88,14 +88,15 @@ export async function GET(request: NextRequest) {
 
     for (const booking of bookings) {
       try {
-        await sendBookingReminderEmail(
-          (booking as any).profiles.email,
-          (booking as any).profiles.full_name || (booking as any).profiles.email.split('@')[0],
-          (booking as any).cars.name,
-          format(new Date(booking.start_date), 'dd MMMM yyyy', { locale: fr }),
-          format(new Date(booking.end_date), 'dd MMMM yyyy', { locale: fr }),
-          (booking as any).cars.image_url || ''
-        )
+        await sendBookingReminderEmail({
+          userEmail: (booking as any).profiles.email,
+          userName: (booking as any).profiles.full_name || (booking as any).profiles.email.split('@')[0],
+          carName: (booking as any).cars.name,
+          carImage: (booking as any).cars.image_url || '',
+          startDate: format(new Date(booking.start_date), 'dd MMMM yyyy', { locale: fr }),
+          endDate: format(new Date(booking.end_date), 'dd MMMM yyyy', { locale: fr }),
+          bookingId: booking.id
+        })
 
         sent++
         console.log(`✅ Rappel envoyé à ${(booking as any).profiles.email} pour ${(booking as any).cars.name}`)
