@@ -3,6 +3,8 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import { Toaster } from 'sonner'
 import AnimationProvider from '@/components/AnimationProvider'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'APX - Location de Voitures',
@@ -57,6 +59,8 @@ export default function RootLayout({
             },
           }}
         />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

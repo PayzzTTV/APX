@@ -360,10 +360,10 @@ Le nouveau schéma va :
 - [x] Déploiement :
   - [x] Déployer sur Vercel ✅
   - [ ] Configurer le domaine personnalisé
-  - [ ] Analytics (Vercel Analytics ou Google Analytics)
-- [ ] Tests :
-  - [ ] Tests unitaires (Jest + React Testing Library)
-  - [ ] Tests E2E (Playwright)
+  - [x] Analytics (Vercel Analytics + Speed Insights) ✅
+- [x] Tests :
+  - [x] Tests unitaires (Jest + React Testing Library) ✅
+  - [x] Tests E2E (Playwright) ✅
   - [ ] Tests de performance (Lighthouse)
 
 ---
