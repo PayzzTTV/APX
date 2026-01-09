@@ -57,12 +57,14 @@ export default function BookingCard({ booking }: BookingCardProps) {
     <>
       <div className="bg-[#1a1a1a] rounded-xl p-6 flex flex-col md:flex-row gap-6">
         {/* Image de la voiture */}
-        <div className="relative h-40 w-full md:w-64 rounded-lg overflow-hidden flex-shrink-0">
+        <div className="relative h-40 w-full md:w-64 rounded-lg overflow-hidden flex-shrink-0 bg-[#252525]">
           <Image
             src={booking.cars.image_url || '/placeholder-car.jpg'}
             alt={booking.cars.name}
             fill
+            loading="lazy"
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 256px"
           />
         </div>
 

@@ -166,7 +166,7 @@ export default function CarGallery({ images, carName }: CarGalleryProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden transition-all ${
+              className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden transition-all bg-[#252525] ${
                 index === currentIndex
                   ? 'ring-2 ring-blue-500 scale-105'
                   : 'opacity-60 hover:opacity-100'
@@ -176,6 +176,7 @@ export default function CarGallery({ images, carName }: CarGalleryProps) {
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
                 fill
+                loading="lazy"
                 className="object-cover"
                 sizes="80px"
               />

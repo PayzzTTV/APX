@@ -23,12 +23,14 @@ export default function CarCard({ car, index = 0 }: CarCardProps) {
       <Link href={`/cars/${car.id}`}>
         <div className="bg-[#1a1a1a] rounded-xl overflow-hidden hover:ring-2 hover:ring-primary transition-all duration-300 cursor-pointer group">
         {/* Image */}
-        <div className="relative h-48 w-full overflow-hidden">
+        <div className="relative h-48 w-full overflow-hidden bg-[#252525]">
           <Image
             src={car.image_url || '/placeholder-car.jpg'}
             alt={car.name}
             fill
+            loading="lazy"
             className="object-cover group-hover:scale-110 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           {/* Bouton Favori */}
           <div className="absolute top-3 right-3 z-10">

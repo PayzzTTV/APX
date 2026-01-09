@@ -87,12 +87,14 @@ export default function AdminBookingCard({ booking }: AdminBookingCardProps) {
     <div className="bg-[#1a1a1a] rounded-xl p-6 border border-gray-700">
       <div className="flex flex-col md:flex-row gap-6">
         {/* Image */}
-        <div className="relative h-32 w-full md:w-48 rounded-lg overflow-hidden flex-shrink-0">
+        <div className="relative h-32 w-full md:w-48 rounded-lg overflow-hidden flex-shrink-0 bg-[#252525]">
           <Image
             src={booking.cars.image_url || '/placeholder-car.jpg'}
             alt={booking.cars.name}
             fill
+            loading="lazy"
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 192px"
           />
         </div>
 

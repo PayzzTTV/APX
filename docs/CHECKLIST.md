@@ -356,9 +356,9 @@ Le nouveau schéma va :
 - [ ] Optimisations :
   - [ ] Upload et optimisation d'images (Cloudinary ou Supabase Storage)
   - [ ] Mise en cache des données (React Query)
-  - [ ] Lazy loading des images
-- [ ] Déploiement :
-  - [ ] Déployer sur Vercel
+  - [x] Lazy loading des images ✅
+- [x] Déploiement :
+  - [x] Déployer sur Vercel ✅
   - [ ] Configurer le domaine personnalisé
   - [ ] Analytics (Vercel Analytics ou Google Analytics)
 - [ ] Tests :
