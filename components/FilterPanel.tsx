@@ -60,6 +60,9 @@ export default function FilterPanel({ filters, onChange, resultsCount }: FilterP
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between px-4 py-3 bg-gray-900/50 backdrop-blur-sm rounded-xl ring-1 ring-gray-700 hover:ring-gray-600 transition-all"
+        aria-expanded={isOpen}
+        aria-controls="filter-panel"
+        aria-label={`Filtres${activeFiltersCount > 0 ? ` (${activeFiltersCount} actif${activeFiltersCount > 1 ? 's' : ''})` : ''}`}
       >
         <div className="flex items-center gap-2">
           <Filter className="w-5 h-5 text-gray-400" />
@@ -97,10 +100,15 @@ export default function FilterPanel({ filters, onChange, resultsCount }: FilterP
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="mt-4 p-4 bg-gray-900/30 backdrop-blur-sm rounded-xl ring-1 ring-gray-700 space-y-6">
+            <div
+              id="filter-panel"
+              className="mt-4 p-4 bg-gray-900/30 backdrop-blur-sm rounded-xl ring-1 ring-gray-700 space-y-6"
+              role="group"
+              aria-label="Options de filtrage"
+            >
               {/* Categories */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-300 mb-3">Catégories</h3>
+              <fieldset>
+                <legend className="text-sm font-semibold text-gray-300 mb-3">Catégories</legend>
                 <div className="grid grid-cols-2 gap-2">
                   {CATEGORIES.map((category) => {
                     const isSelected = filters.categories.includes(category.value)
@@ -114,18 +122,21 @@ export default function FilterPanel({ filters, onChange, resultsCount }: FilterP
                             ? 'bg-blue-500 text-white ring-2 ring-blue-400'
                             : 'bg-gray-800/50 text-gray-300 ring-1 ring-gray-700 hover:ring-gray-600'
                         }`}
+                        role="checkbox"
+                        aria-checked={isSelected}
+                        aria-label={`Catégorie ${category.label}`}
                       >
-                        <span className="text-lg">{category.icon}</span>
+                        <span className="text-lg" aria-hidden="true">{category.icon}</span>
                         <span className="text-sm font-medium">{category.label}</span>
                       </motion.button>
                     )
                   })}
                 </div>
-              </div>
+              </fieldset>
 
               {/* Rating Filter */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-300 mb-3">Note minimum</h3>
+              <fieldset>
+                <legend className="text-sm font-semibold text-gray-300 mb-3">Note minimum</legend>
                 <div className="flex gap-2">
                   {RATINGS.map((rating) => {
                     const isSelected = filters.minRating === rating.value
@@ -139,14 +150,17 @@ export default function FilterPanel({ filters, onChange, resultsCount }: FilterP
                             ? 'bg-yellow-500 text-gray-900 ring-2 ring-yellow-400'
                             : 'bg-gray-800/50 text-gray-300 ring-1 ring-gray-700 hover:ring-gray-600'
                         }`}
+                        role="radio"
+                        aria-checked={isSelected}
+                        aria-label={`Note minimum ${rating.label}`}
                       >
-                        <Star className={`w-4 h-4 ${isSelected ? 'fill-gray-900' : 'fill-yellow-500'}`} />
+                        <Star className={`w-4 h-4 ${isSelected ? 'fill-gray-900' : 'fill-yellow-500'}`} aria-hidden="true" />
                         <span className="text-sm font-medium">{rating.label}</span>
                       </motion.button>
                     )
                   })}
                 </div>
-              </div>
+              </fieldset>
 
               {/* Reset Button */}
               {hasActiveFilters && (
@@ -157,8 +171,9 @@ export default function FilterPanel({ filters, onChange, resultsCount }: FilterP
                   whileTap={{ scale: 0.95 }}
                   onClick={resetFilters}
                   className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-800/50 text-gray-300 rounded-lg ring-1 ring-gray-700 hover:ring-gray-600 transition-all"
+                  aria-label="Réinitialiser tous les filtres"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4" aria-hidden="true" />
                   <span className="text-sm font-medium">Réinitialiser les filtres</span>
                 </motion.button>
               )}

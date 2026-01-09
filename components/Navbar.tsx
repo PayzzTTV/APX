@@ -23,13 +23,17 @@ export default async function Navbar() {
   return (
     <>
       {/* Top bar - Logo only on mobile, full nav on desktop */}
-      <nav className="bg-[#1a1a1a] border-b border-gray-800 sticky top-0 z-50">
+      <nav
+        className="bg-[#1a1a1a] border-b border-gray-800 sticky top-0 z-50"
+        role="navigation"
+        aria-label="Navigation principale"
+      >
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center space-x-2">
+              <Link href="/" className="flex items-center space-x-2" aria-label="APX - Retour à l'accueil">
                 <div className="text-2xl font-bold text-primary">APX</div>
               </Link>
             </div>
@@ -109,8 +113,12 @@ export default async function Navbar() {
       </nav>
 
       {/* Bottom Navigation - Mobile only (iOS style) */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1a1a1a] border-t border-gray-800 z-50 safe-area-inset-bottom">
-        <div className="flex items-center justify-around h-16 px-2">
+      <nav
+        className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1a1a1a] border-t border-gray-800 z-50 safe-area-inset-bottom"
+        role="navigation"
+        aria-label="Navigation mobile"
+      >
+        <div className="flex items-center justify-around h-16 px-2" role="menubar">
           <Link
             href="/"
             className="flex flex-col items-center justify-center flex-1 text-gray-400 hover:text-primary transition-colors"

@@ -29,16 +29,19 @@ export default function SearchBar({ value, onChange, placeholder = "Rechercher u
           isFocused ? 'ring-2 ring-blue-500' : 'ring-1 ring-gray-700'
         } rounded-xl bg-gray-900/50 backdrop-blur-sm`}
       >
-        <Search className="absolute left-4 w-5 h-5 text-gray-400" />
+        <Search className="absolute left-4 w-5 h-5 text-gray-400" aria-hidden="true" />
 
+        <label htmlFor="search-cars" className="sr-only">Rechercher une voiture</label>
         <input
-          type="text"
+          id="search-cars"
+          type="search"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
           className="w-full py-3 pl-12 pr-12 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+          aria-describedby={value ? "search-hint" : undefined}
         />
 
         <AnimatePresence>
@@ -64,7 +67,9 @@ export default function SearchBar({ value, onChange, placeholder = "Rechercher u
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            id="search-hint"
             className="mt-2 text-sm text-gray-400 pl-4"
+            aria-live="polite"
           >
             Recherche pour "{value}"
           </motion.p>

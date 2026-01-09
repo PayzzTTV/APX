@@ -1,0 +1,139 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "reset": "Réinitialiser",
+    "close": "Fermer"
+  },
+  "nav": {
+    "home": "Accueil",
+    "favorites": "Mes Favoris",
+    "bookings": "Mes Réservations",
+    "profile": "Profil",
+    "admin": "Admin",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "title": "Votre voiture idéale",
+    "subtitle": "Accès illimité à notre flotte de véhicules premium",
+    "searchPlaceholder": "Rechercher une voiture...",
+    "noResults": "Aucune voiture ne correspond à vos critères",
+    "resetFilters": "Réinitialiser les filtres"
+  },
+  "car": {
+    "reserve": "Réserver",
+    "category": "Catégorie",
+    "rating": "Note",
+    "specifications": "Caractéristiques",
+    "weight": "Poids",
+    "dimensions": "Dimensions",
+    "comfort": "Confort",
+    "finish": "Finition",
+    "transmission": "Transmission",
+    "fuel": "Carburant",
+    "seats": "Places",
+    "doors": "Portes"
+  },
+  "booking": {
+    "title": "Mes Réservations",
+    "noBookings": "Vous n'avez aucune réservation",
+    "browseNow": "Parcourir les voitures",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "duration": "Durée",
+    "days": "jours",
+    "status": {
+      "pending": "En attente",
+      "confirmed": "Confirmée",
+      "cancelled": "Annulée"
+    },
+    "actions": {
+      "view": "Voir la voiture",
+      "modify": "Modifier",
+      "cancel": "Annuler"
+    },
+    "calendar": {
+      "selectDates": "Sélectionnez vos dates",
+      "confirm": "Confirmer la réservation"
+    }
+  },
+  "favorites": {
+    "title": "Mes Favoris",
+    "noFavorites": "Vous n'avez aucun favori",
+    "browseNow": "Parcourir les voitures",
+    "addToFavorites": "Ajouter aux favoris",
+    "removeFromFavorites": "Retirer des favoris"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Inscription",
+    "email": "Email",
+    "password": "Mot de passe",
+    "fullName": "Nom complet",
+    "phone": "Téléphone",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Pas de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "signupNow": "S'inscrire",
+    "loginNow": "Se connecter"
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "updateSuccess": "Profil mis à jour avec succès",
+    "updateError": "Erreur lors de la mise à jour"
+  },
+  "admin": {
+    "dashboard": "Tableau de bord",
+    "cars": "Voitures",
+    "bookings": "Réservations",
+    "users": "Utilisateurs",
+    "stats": {
+      "totalBookings": "Réservations totales",
+      "activeBookings": "Réservations actives",
+      "totalCars": "Voitures",
+      "totalUsers": "Utilisateurs"
+    }
+  },
+  "filters": {
+    "title": "Filtres",
+    "categories": "Catégories",
+    "minRating": "Note minimum",
+    "all": "Toutes",
+    "resetAll": "Réinitialiser les filtres",
+    "results": "{count, plural, =0 {Aucun résultat} =1 {1 résultat} other {# résultats}}"
+  },
+  "categories": {
+    "citadine": "Citadine",
+    "compacte": "Compacte",
+    "berline": "Berline",
+    "suv": "SUV",
+    "electrique": "Électrique",
+    "luxe": "Luxe",
+    "sportive": "Sportive"
+  },
+  "errors": {
+    "generic": "Une erreur est survenue",
+    "notFound": "Page non trouvée",
+    "unauthorized": "Accès non autorisé",
+    "datesUnavailable": "Ces dates ne sont pas disponibles"
+  },
+  "accessibility": {
+    "skipToContent": "Aller au contenu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "fullscreen": "Plein écran"
+  }
+}

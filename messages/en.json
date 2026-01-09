@@ -1,0 +1,139 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "close": "Close"
+  },
+  "nav": {
+    "home": "Home",
+    "favorites": "My Favorites",
+    "bookings": "My Bookings",
+    "profile": "Profile",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Your ideal car",
+    "subtitle": "Unlimited access to our premium fleet",
+    "searchPlaceholder": "Search for a car...",
+    "noResults": "No cars match your criteria",
+    "resetFilters": "Reset filters"
+  },
+  "car": {
+    "reserve": "Book",
+    "category": "Category",
+    "rating": "Rating",
+    "specifications": "Specifications",
+    "weight": "Weight",
+    "dimensions": "Dimensions",
+    "comfort": "Comfort",
+    "finish": "Finish",
+    "transmission": "Transmission",
+    "fuel": "Fuel",
+    "seats": "Seats",
+    "doors": "Doors"
+  },
+  "booking": {
+    "title": "My Bookings",
+    "noBookings": "You have no bookings",
+    "browseNow": "Browse cars",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "duration": "Duration",
+    "days": "days",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    },
+    "actions": {
+      "view": "View car",
+      "modify": "Modify",
+      "cancel": "Cancel"
+    },
+    "calendar": {
+      "selectDates": "Select your dates",
+      "confirm": "Confirm booking"
+    }
+  },
+  "favorites": {
+    "title": "My Favorites",
+    "noFavorites": "You have no favorites",
+    "browseNow": "Browse cars",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "No account?",
+    "hasAccount": "Already have an account?",
+    "signupNow": "Sign up",
+    "loginNow": "Log in"
+  },
+  "profile": {
+    "title": "My Profile",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Error updating profile"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "cars": "Cars",
+    "bookings": "Bookings",
+    "users": "Users",
+    "stats": {
+      "totalBookings": "Total bookings",
+      "activeBookings": "Active bookings",
+      "totalCars": "Cars",
+      "totalUsers": "Users"
+    }
+  },
+  "filters": {
+    "title": "Filters",
+    "categories": "Categories",
+    "minRating": "Minimum rating",
+    "all": "All",
+    "resetAll": "Reset filters",
+    "results": "{count, plural, =0 {No results} =1 {1 result} other {# results}}"
+  },
+  "categories": {
+    "citadine": "City car",
+    "compacte": "Compact",
+    "berline": "Sedan",
+    "suv": "SUV",
+    "electrique": "Electric",
+    "luxe": "Luxury",
+    "sportive": "Sports"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized access",
+    "datesUnavailable": "These dates are not available"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "fullscreen": "Fullscreen"
+  }
+}

@@ -365,6 +365,9 @@ Le nouveau schéma va :
   - [x] Tests unitaires (Jest + React Testing Library) ✅
   - [x] Tests E2E (Playwright) ✅
   - [ ] Tests de performance (Lighthouse)
+- [x] Accessibilité & i18n :
+  - [x] Assurer l'accessibilité (ARIA labels, navigation clavier) ✅
+  - [x] Internationalisation (i18n) avec next-intl ✅
 
 ---
 
