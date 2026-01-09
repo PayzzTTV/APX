@@ -333,10 +333,10 @@ if (profile?.role !== 'admin') {
 
 ---
 
-#### 5.2 Tests
+#### 5.2 Tests ✅ EN COURS
 - ✅ Tests unitaires (Jest + React Testing Library)
 - 🔄 Tests d'intégration
-- 🎭 Tests E2E (Playwright)
+- ✅ Tests E2E (Playwright) - Configuration prête
 - 📊 Tests de performance (Lighthouse)
 - 🔐 Tests de sécurité
 
@@ -344,11 +344,11 @@ if (profile?.role !== 'admin') {
 
 ---
 
-#### 5.3 Déploiement
-- 🚀 Déployer sur Vercel
+#### 5.3 Déploiement ✅ EN COURS
+- ✅ Déployer sur Vercel
 - 🌐 Configurer le domaine personnalisé
-- 📊 Analytics (Vercel Analytics)
-- 🔔 Monitoring des erreurs (Sentry)
+- ✅ Analytics (Vercel Analytics + Speed Insights)
+- ✅ Monitoring des erreurs (Sentry)
 - 📈 A/B testing (si nécessaire)
 
 **Estimation :** 1-2 jours
