@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
+import QueryProvider from '@/components/QueryProvider'
 
 export const metadata: Metadata = {
   title: 'APX - Location de Voitures',
@@ -51,27 +52,29 @@ export default async function RootLayout({
         >
           Aller au contenu principal
         </a>
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main id="main-content" className="mx-auto px-4 py-6 pb-20" role="main">
-            <AnimationProvider>
-              {children}
-            </AnimationProvider>
-          </main>
-          <Toaster
-            position="top-center"
-            expand={false}
-            richColors
-            theme="dark"
-            toastOptions={{
-              style: {
-                background: '#1a1a1a',
-                border: '1px solid #333',
-                color: '#fff',
-              },
-            }}
-          />
-        </NextIntlClientProvider>
+        <QueryProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            <main id="main-content" className="mx-auto px-4 py-6 pb-20" role="main">
+              <AnimationProvider>
+                {children}
+              </AnimationProvider>
+            </main>
+            <Toaster
+              position="top-center"
+              expand={false}
+              richColors
+              theme="dark"
+              toastOptions={{
+                style: {
+                  background: '#1a1a1a',
+                  border: '1px solid #333',
+                  color: '#fff',
+                },
+              }}
+            />
+          </NextIntlClientProvider>
+        </QueryProvider>
         <Analytics />
         <SpeedInsights />
       </body>

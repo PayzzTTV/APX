@@ -353,9 +353,9 @@ Le nouveau schéma va :
   - [ ] Intégration Stripe pour les paiements mensuels - **PAS DE PAYWALL PRÉVU**
   - [ ] Différents niveaux d'abonnement (Basic, Premium, VIP) - **PAS DE PAYWALL PRÉVU**
   - [ ] Page de facturation et historique - **PAS DE PAYWALL PRÉVU**
-- [ ] Optimisations :
+- [x] Optimisations :
   - [ ] Upload et optimisation d'images (Cloudinary ou Supabase Storage)
-  - [ ] Mise en cache des données (React Query)
+  - [x] Mise en cache des données (React Query) ✅
   - [x] Lazy loading des images ✅
 - [x] Déploiement :
   - [x] Déployer sur Vercel ✅
